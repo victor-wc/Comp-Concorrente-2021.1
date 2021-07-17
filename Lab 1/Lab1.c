@@ -87,10 +87,10 @@ int main(void){
     }
 
     //imprimir o vetor resultante
-    for(int i = 0; i<TAM; i++ ){
-        printf("%d ", vetor[i]);
-    }
-    printf("\n");
+    // for(int i = 0; i<TAM; i++ ){
+    //     printf("%d ", vetor[i]);
+    // }
+    // printf("\n");
     return 0;
 
 }
