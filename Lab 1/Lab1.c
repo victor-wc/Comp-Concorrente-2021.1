@@ -10,14 +10,14 @@ int vetorCheck[TAM];
 void * tarefa (void * arg) {
     int ident = * (int *) arg;
     if(ident == 1){
-        for(int i = 1; i<=TAM; i++){
+        for(int i = 0; i<TAM; i++){
             if(vetor[i] % 2 != 0){
                 vetor[i] = vetor[i]*vetor[i];
             }
         }
     }
     if(ident == 2){
-        for(int i = 1; i<=TAM; i++){
+        for(int i = 0; i<TAM; i++){
             if(vetor[i] % 2 == 0){
                 vetor[i] = vetor[i]*vetor[i];
             }
@@ -87,10 +87,10 @@ int main(void){
     }
 
     //imprimir o vetor resultante
-    // for(int i = 0; i<TAM; i++ ){
-    //     printf("%d ", vetor[i]);
-    // }
-    // printf("\n");
+    for(int i = 0; i<TAM; i++ ){
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
     return 0;
 
 }
