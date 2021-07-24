@@ -4,7 +4,7 @@
 #include "timer.h"
 
 float *mat1; //primeira matriz quadrada
-float *vet; //segunda matriz quadrada
+float *mat2; //segunda matriz quadrada
 float *res; //matriz resultado da multiplicacao
 int qthreads; //numero de threads
 int tam; //dimensao da matriz quadrada
@@ -15,7 +15,7 @@ void * multiplicaMatriz(void *arg) {
 	for(int i = id; i < tam; i+=qthreads) {
 		for(int j = 0; j < tam; j++) {
 			for(int k = 0; k < tam; k++) {
-				res[i*tam + j] += mat1[i*tam + k]*vet[k*tam + j];
+				res[i*tam + j] += mat1[i*tam + k]*mat2[k*tam + j];
 			}
 		}
 	}
@@ -34,6 +34,7 @@ int checaIgualdade(){
 	}
     return correto;
 }
+
 
 
 int main(int argc, char* argv[]) {
@@ -56,8 +57,8 @@ int main(int argc, char* argv[]) {
 		printf("ERRO - malloc\n");
 		return -1;
 	}
-	vet = (float *) malloc(sizeof(float)*tam*tam);
-	if(vet == NULL) {
+	mat2 = (float *) malloc(sizeof(float)*tam*tam);
+	if(mat2 == NULL) {
 		printf("ERRO - malloc\n");
 		return -1;
 	}
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < tam; i++) {
 		for(int j = 0; j < tam; j++) {
 			mat1[i*tam + j] = 1;
-			vet[i*tam + j] = 1;
+			mat2[i*tam + j] = 1;
 			res[i*tam + j] = 0;
 		}
 	}
@@ -113,7 +114,7 @@ int main(int argc, char* argv[]) {
 	//liberacao da memoria
 	GET_TIME(inicio);
 	free(mat1);
-	free(vet);
+	free(mat2);
 	free(res);
 	free(tid);
 	GET_TIME(fim);
