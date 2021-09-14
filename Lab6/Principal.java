@@ -62,7 +62,7 @@ class Principal {
 			System.out.println("Algum valor esta errado!");
 		}
 	}
-	
+
 	public static void main (String[] args) {
 		if(args.length < 2) {
 			System.out.println("java Principal <numero de elementos> <numero de threads>");
